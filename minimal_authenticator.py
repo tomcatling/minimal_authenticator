@@ -45,13 +45,13 @@ def verify_password(stored_password, provided_password):
 
 class MinimalAuthenticator(Authenticator):
 
-    def __init__(self, logins_path='/etc/jupyterhub/logins.toml'):
-      with open(logins_path) as f:
-        self.logins = toml.loads(f.read())
-
     @gen.coroutine
     def authenticate(self, handler, data):
-        if verify_password(self.logins.get(data['username']),data['password']):
+
+        with open('/etc/jupyterhub/logins.toml') as f:
+          logins = toml.loads(f.read())
+
+        if verify_password(logins.get(data['username']),data['password']):
             return data['username']
 
 if __name__ == '__main__':
