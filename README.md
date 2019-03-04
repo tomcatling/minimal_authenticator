@@ -1,4 +1,4 @@
-This is a very minimal authenticator which allows you to 'bake' a set of usernames and passwords into JupyterHub. 
+This is a very minimal authenticator allowing a set of usernames and hashed passwords to be provided for JupyterHub. 
 
 The usernames and passwords given here are currently:
 
