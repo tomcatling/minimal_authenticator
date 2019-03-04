@@ -48,7 +48,7 @@ class MinimalAuthenticator(Authenticator):
     @gen.coroutine
     def authenticate(self, handler, data):
 
-        with open('/etc/jupyterhub/logins.toml') as f:
+        with open('/srv/jupyterhub/logins.toml') as f:
           logins = toml.loads(f.read())
 
         if verify_password(logins.get(data['username']),data['password']):
